@@ -191,6 +191,8 @@ def main(token):
 #        Sign(token).submit_sign()
     else:
         logging.warning("当前不在签到时间!")
+        Sign(token).submit_sign()
+        logging.warning("晚签到!")
     return
 
 
