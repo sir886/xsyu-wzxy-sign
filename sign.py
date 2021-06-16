@@ -183,8 +183,6 @@ def main(token):
         Inspect(token).submit_insp()
     else:
         logging.warning("当前不在签到时间!")
-        Sign(token).submit_sign()
-        logging.warning("晚签到!")
     return
 
 
