@@ -177,21 +177,23 @@ class Sign(Req):
 
 
 def main(token):
-    seq = get_seq()
-    if seq == 3:
+    print("************************")
+    print(" 1. 早检")
+    print(" 2. 午检")
+    print(" 3. 晚检")
+    print(" 4. 签到\n")
+    seq = int(input("请选择要执行的操作："))
+    if seq < 4:
         Inspect.data['seq'] = seq
         Inspect(token).submit_insp()
+    elif seq == 4:
+        Sign(token).submit_sign()
     else:
         logging.warning("当前不在签到时间!")
     return
 
 
 if __name__ == "__main__":
-    secret = input().strip().split('#')
-    secret.append('')
-    token = secret[0]
-    sckey = secret[1]
-    seconds = random.randint(10, 30)
-    logging.info('将在 {} 秒后开始任务...'.format(seconds))
-    time.sleep(seconds)
+    token = input("请输入小程序Token: ")
+    sckey = ""
     main(token)
